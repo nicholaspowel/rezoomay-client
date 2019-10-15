@@ -1,0 +1,16 @@
+#content-column {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+}
+
+.content-summary {
+  padding: 50px 0 0;
+  text-align: justify;
+}
+
+.skill {
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}

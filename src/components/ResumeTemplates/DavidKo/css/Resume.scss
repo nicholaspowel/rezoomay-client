@@ -1,0 +1,11 @@
+#resume {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  max-width: 1000px;
+  overflow: hidden;
+  background-color: white;
+  color: black;
+  position: absolute;
+  box-shadow: 0 1rem 1rem black;
+}
