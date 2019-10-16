@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const axiosCall = (user, method = 'GET', route = '/resumes', id = '', data = {}) => {
+export const axiosCall = (user, route = '/resumes', method = 'GET', id = '', data = {}) => {
   return axios({
     method: method,
     headers: {
