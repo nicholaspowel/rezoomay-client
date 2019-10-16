@@ -5,12 +5,8 @@ import Button from 'react-bootstrap/Button'
 
 /*
 {
-  description: [
-    'Full time 500+ Web Development Immersive Program',
-    'Developed four Full Stack web applications using JavaScript, HTML, CSS, and Ruby',
-    'Collaborated with a team using Agile methodology and Scrum principles'
-  ],
-  coursework: [],
+  description: 'Full time 500+ Web Development Immersive Program\n Developed four Full Stack web applications using JavaScript, HTML, CSS, and Ruby\nCollaborated with a team using Agile methodology and Scrum principles',
+  coursework: '',
   _id: '',
   title: 'GA',
   startDate: {
@@ -61,7 +57,7 @@ const EducationForm = ({ education, handleChange, handleSubmit }) => {
         <Form.Control
           type="text"
           placeholder="City"
-          name="city"
+          name="location[city]"
           onChange={handleChange}
           value={education.location.city}
           required
@@ -69,14 +65,14 @@ const EducationForm = ({ education, handleChange, handleSubmit }) => {
         <Form.Control
           type="text"
           placeholder="State (eg MA)"
-          name="state"
+          name="location[state]"
           onChange={handleChange}
           value={education.location.state}
         />
         <Form.Control
           type="text"
           placeholder="Country"
-          name="country"
+          name="location[country]"
           onChange={handleChange}
           value={education.location.country}
           required
@@ -165,7 +161,7 @@ const EducationForm = ({ education, handleChange, handleSubmit }) => {
         <Form.Control
           as="textarea"
           rows="4"
-          placeholder=" Break onto newlines every sentence or two"
+          placeholder="Coursework: Break onto newlines every sentence or two"
           name="coursework"
           onChange={handleChange}
           value={education.coursework}

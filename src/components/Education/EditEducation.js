@@ -48,7 +48,16 @@ const EditEducation = ({ match, alert, user }) => {
 
   const handleChange = (event) => {
     event.persist()
-    setEducation({ ...education, [event.target.name]: event.target.value })
+    let name = event.target.name
+    let newVal = null
+    if (name.includes('[')) {
+      const keys = name.split('[').map((k) => k.replace(/]$/, ''))
+      name = keys[0]
+      newVal = { ...education[name], [keys[1]]: event.target.value }
+      console.log('newVal', newVal)
+    }
+
+    setEducation({ ...education, [name]: newVal || event.target.value })
   }
 
   const handleSubmit = (event) => {

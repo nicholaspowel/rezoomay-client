@@ -8,35 +8,39 @@ import { Redirect } from 'react-router-dom'
 const CreateEducation = ({ alert, user }) => {
   const [education, setEducation] = useState({
     description:
-      'Full time 500+ Web Development Immersive Program\n Developed four Full Stack web applications using JavaScript, HTML, CSS, and Ruby\nCollaborated with a team using Agile methodology and Scrum principles',
-    coursework: [],
-    _id: '',
-    title: 'GA',
+      '',
+    coursework: '',
+    title: '',
     startDate: {
-      month: 'Jan',
+      month: '',
       year: 2019
     },
     endDate: {
-      month: 'Apr',
+      month: '',
       year: 2019
     },
-    school: 'General Assembly',
-    concentration: 'Full Stack Web Development',
+    school: '',
+    concentration: '',
     location: {
-      city: 'Boston',
-      state: 'MA',
-      country: 'USA'
-    },
-    owner: '',
-    createdAt: '2019-10-15T22:38:46.652Z',
-    updatedAt: '2019-10-15T22:38:46.652Z',
-    __v: 0
+      city: '',
+      state: '',
+      country: ''
+    }
   })
   const [created, setCreated] = useState(null)
 
   const handleChange = (event) => {
     event.persist()
-    setEducation({ ...education, [event.target.name]: event.target.value })
+    let name = event.target.name
+    let newVal = null
+    if (name.includes('[')) {
+      const keys = name.split('[').map((k) => k.replace(/]$/, ''))
+      name = keys[0]
+      newVal = { ...education[name], [keys[1]]: event.target.value }
+      console.log('newVal', newVal)
+    }
+
+    setEducation({ ...education, [name]: newVal || event.target.value })
   }
 
   const handleSubmit = (event) => {
