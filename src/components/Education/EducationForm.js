@@ -152,7 +152,8 @@ const EducationForm = ({ education, handleChange, handleSubmit }) => {
       <Form.Group controlId="description">
         <Form.Label>Description</Form.Label>
         <Form.Control
-          type="text"
+          as="textarea"
+          rows="4"
           placeholder="What you did. Break onto newlines every sentence or two"
           name="description"
           onChange={handleChange}
@@ -162,7 +163,8 @@ const EducationForm = ({ education, handleChange, handleSubmit }) => {
       <Form.Group controlId="coursework">
         <Form.Label>Coursework</Form.Label>
         <Form.Control
-          type="text"
+          as="textarea"
+          rows="4"
           placeholder=" Break onto newlines every sentence or two"
           name="coursework"
           onChange={handleChange}
