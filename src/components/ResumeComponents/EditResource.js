@@ -1,37 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import BookForm from './BookForm'
+import ReusableForm from './ReusableForm'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import axiosCall from '../../api/resources'
 import { Redirect, withRouter } from 'react-router-dom'
 // import { withRouter, Link } from 'react-router-dom'
 
-const EditBook = ({ match, alert, user }) => {
-  const [book, setBook] = useState({
-    author: '',
-    createdAt: '',
-    firstPublished: '',
-    originalLanguage: '',
-    title: '',
-    updatedAt: '',
-    _id: ''
+const EditResource = ({ match, alert, user, resource }) => {
+  const [item, setItem] = useState({
+    // needs to be an interchangable object
   })
   const [updated, setUpdated] = useState(null)
 
   useEffect(() => {
-    axios({
-      method: 'GET',
-      url: `${apiUrl}/books/${match.params.id}`,
-      headers: {
-        'Authorization': `Bearer ${user.token}`
-      }
-    })
-      .then((response) => setBook(response.data.book))
+    axiosCall(user, 'PATCH', resourceRoutes[resource])
+      .then((response) => setItem(response.data[resource]))
       .catch(console.error)
   }, [])
 
   const handleChange = (event) => {
     event.persist()
-    setBook({ ...book, [event.target.name]: event.target.value })
+    setItem({ ...book, [event.target.name]: event.target.value })
   }
 
   const handleSubmit = (event) => {
@@ -55,9 +44,9 @@ const EditBook = ({ match, alert, user }) => {
     return <Redirect to={`/books/${updated}`}/>
   } else {
     return (
-      <BookForm book={book} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <ReusableForm book={book} handleChange={handleChange} handleSubmit={handleSubmit}/>
     )
   }
 }
 
-export default withRouter(EditBook)
+export default withRouter(EditResource)

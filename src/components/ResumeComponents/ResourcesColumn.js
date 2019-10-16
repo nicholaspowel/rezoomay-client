@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import axiosCall from '../../api/resources'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 
@@ -7,7 +8,7 @@ const Books = ({ user, alerts }) => {
   const [books, setBooks] = useState([])
 
   useEffect(() => {
-
+      axiosCall(user)
       .then(responseData => {
         // console.log(responseData.data.books)
         setBooks((responseData.data.books))
