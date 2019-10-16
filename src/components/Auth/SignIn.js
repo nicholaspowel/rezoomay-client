@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { signUp, signIn } from '../../api/auth'
-import messages from '../AutoDismissAlert/messages'
+import { signIn } from '../../api/auth'
+import messages from '../Shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class SignUp extends Component {
+class SignIn extends Component {
   constructor () {
     super()
 
     this.state = {
       email: '',
-      password: '',
-      passwordConfirmation: ''
+      password: ''
     }
   }
 
@@ -22,39 +21,38 @@ class SignUp extends Component {
     [event.target.name]: event.target.value
   })
 
-  onSignUp = event => {
+  onSignIn = event => {
     event.preventDefault()
 
     const { alert, history, setUser } = this.props
 
-    signUp(this.state)
-      .then(() => signIn(this.state))
+    signIn(this.state)
       .then(res => setUser(res.data.user))
       .then(() => alert({
-        heading: 'Sign Up Success',
-        message: messages.signUpSuccess,
+        heading: 'Sign In Success',
+        message: messages.signInSuccess,
         variant: 'success'
       }))
       .then(() => history.push('/'))
       .catch(error => {
         console.error(error)
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
+        this.setState({ email: '', password: '' })
         alert({
-          heading: 'Sign Up Failed',
-          message: messages.signUpFailure,
+          heading: 'Sign In Failed',
+          message: messages.signInFailure,
           variant: 'danger'
         })
       })
   }
 
   render () {
-    const { email, password, passwordConfirmation } = this.state
+    const { email, password } = this.state
 
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign Up</h3>
-          <Form onSubmit={this.onSignUp}>
+          <h3>Sign In</h3>
+          <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -77,17 +75,6 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="passwordConfirmation">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
-                required
-                name="passwordConfirmation"
-                value={passwordConfirmation}
-                type="password"
-                placeholder="Confirm Password"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
             <Button
               variant="primary"
               type="submit"
@@ -101,4 +88,4 @@ class SignUp extends Component {
   }
 }
 
-export default withRouter(SignUp)
+export default withRouter(SignIn)

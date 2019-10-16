@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 
-import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
-import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
-import Header from '../Header/Header'
-import SignUp from '../SignUp/SignUp'
-import SignIn from '../SignIn/SignIn'
-import SignOut from '../SignOut/SignOut'
-import ChangePassword from '../ChangePassword/ChangePassword'
+import AuthenticatedRoute from '../Shared/AuthenticatedRoute'
+import AutoDismissAlert from '../Shared/AutoDismissAlert/AutoDismissAlert'
+import Header from '../Shared/Header'
+import SignUp from '../Auth/SignUp'
+import SignIn from '../Auth/SignIn'
+import SignOut from '../Auth/SignOut'
+import ChangePassword from '../Auth/ChangePassword'
 
 class App extends Component {
   constructor () {
