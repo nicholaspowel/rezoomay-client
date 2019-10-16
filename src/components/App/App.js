@@ -9,6 +9,11 @@ import SignIn from '../Auth/SignIn'
 import SignOut from '../Auth/SignOut'
 import ChangePassword from '../Auth/ChangePassword'
 
+import EducationList from '../Education/EducationList'
+import EditEducation from '../Education/EditEducation'
+import Education from '../Education/Education'
+import CreateEducation from '../Education/CreateEducation'
+
 class App extends Component {
   constructor () {
     super()
@@ -53,6 +58,18 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/educationList' render={() => (
+            <EducationList alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/educationList/:id' render={() => (
+            <Education alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/educationList/:id/edit' render={() => (
+            <EditEducation alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/create-education' render={() => (
+            <CreateEducation alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>
