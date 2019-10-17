@@ -12,7 +12,7 @@ const InfoSkills = () => {
       value: 'Ruby on Rails'
     },
     {
-      icon: 'devicon-express-original colore',
+      icon: 'devicon-express-original colored',
       value: 'Express.js'
     },
     {

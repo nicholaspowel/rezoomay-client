@@ -90,7 +90,7 @@ const Education = ({ user, alert, match }) => {
             <div>
               <span className="font-italic">{education.location.city}, {education.location.state}, {education.location.country} </span>
             </div>
-            <span className="ml-auto">{education.startDate.month} {education.startDate.year} - {education.endDate.month} {education.endDate.year}</span>
+            { /* use momentjs to display date s here  */ }
           </div>
           {education.coursework ? <span>Coursework:</span> : ''}
           <ul>

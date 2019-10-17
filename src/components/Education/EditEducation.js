@@ -54,7 +54,7 @@ const EditEducation = ({ match, alert, user }) => {
       const keys = name.split('[').map((k) => k.replace(/]$/, ''))
       name = keys[0]
       newVal = { ...education[name], [keys[1]]: event.target.value }
-      console.log('newVal', newVal)
+      // console.log('newVal', newVal)
     }
 
     setEducation({ ...education, [name]: newVal || event.target.value })
