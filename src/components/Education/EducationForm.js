@@ -29,7 +29,7 @@ import Button from 'react-bootstrap/Button'
   updatedAt: '2019-10-15T22:38:46.652Z',
   __v: 0
 }
-}
+
 */
 
 const EducationForm = ({ education, handleChange, handleSubmit }) => {

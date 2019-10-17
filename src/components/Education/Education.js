@@ -20,28 +20,28 @@ const Education = ({ user, alert, match }) => {
   const [deleted, setDeleted] = useState(false)
   const [education, setEducation] = useState({
     description:
-      'Full time 500+ Web Development Immersive Program\n Developed four Full Stack web applications using JavaScript, HTML, CSS, and Ruby\nCollaborated with a team using Agile methodology and Scrum principles',
+      '',
     coursework: '',
     _id: '',
-    title: 'GA',
+    title: '',
     startDate: {
-      month: 'Jan',
+      month: '',
       year: 2019
     },
     endDate: {
-      month: 'Apr',
+      month: '',
       year: 2019
     },
-    school: 'General Assembly',
-    concentration: 'Full Stack Web Development',
+    school: '',
+    concentration: '',
     location: {
-      city: 'Boston',
-      state: 'MA',
-      country: 'USA'
+      city: '',
+      state: '',
+      country: ''
     },
     owner: '',
-    createdAt: '2019-10-15T22:38:46.652Z',
-    updatedAt: '2019-10-15T22:38:46.652Z',
+    createdAt: '',
+    updatedAt: '',
     __v: 0
   })
 
@@ -82,6 +82,21 @@ const Education = ({ user, alert, match }) => {
     return (
       <Fragment>
         <h1>{education.title}</h1>
+        <div className="content-education-item">
+          <div className="d-flex justify-content-between">
+            <div>
+              <span className="font-weight-bold">{education.school}</span>
+            </div>
+            <div>
+              <span className="font-italic">{education.location.city}, {education.location.state}, {education.location.country} </span>
+            </div>
+            <span className="ml-auto">{education.startDate.month} {education.startDate.year} - {education.endDate.month} {education.endDate.year}</span>
+          </div>
+          {education.coursework ? <span>Coursework:</span> : ''}
+          <ul>
+            {education.description.split(/\r\n|\n|\r/).map((bullet, index) => <li key={index}>{bullet}</li>)}
+          </ul>
+        </div>
         <Button onClick={deleteEducation} variant="danger">Destroy Education </Button>
         <Button href={`#/educationList/${match.params.id}/edit`} variant="warning">Edit</Button>
         <Link to="/educationList">Back to all Education List</Link>
