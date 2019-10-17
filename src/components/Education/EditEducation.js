@@ -12,14 +12,8 @@ const EditEducation = ({ match, alert, user }) => {
     coursework: [],
     _id: '',
     title: 'GA',
-    startDate: {
-      month: 'Jan',
-      year: 2019
-    },
-    endDate: {
-      month: 'Apr',
-      year: 2019
-    },
+    startDate: '',
+    endDate: '',
     school: 'General Assembly',
     concentration: 'Full Stack Web Development',
     location: {

@@ -11,14 +11,8 @@ const CreateEducation = ({ alert, user }) => {
       '',
     coursework: '',
     title: '',
-    startDate: {
-      month: '',
-      year: 2019
-    },
-    endDate: {
-      month: '',
-      year: 2019
-    },
+    startDate: '',
+    endDate: '',
     school: '',
     concentration: '',
     location: {

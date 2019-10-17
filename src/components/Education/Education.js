@@ -24,14 +24,8 @@ const Education = ({ user, alert, match }) => {
     coursework: '',
     _id: '',
     title: '',
-    startDate: {
-      month: '',
-      year: 2019
-    },
-    endDate: {
-      month: '',
-      year: 2019
-    },
+    startDate: '',
+    endDate: '',
     school: '',
     concentration: '',
     location: {
