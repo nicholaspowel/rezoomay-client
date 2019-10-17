@@ -48,7 +48,7 @@ const Project = ({ user, alert, match }) => {
       .then((response) => {
         setProject(response.data.project)
       })
-      .catch(console.error)
+      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
   const deleteProject = () => {
@@ -64,7 +64,6 @@ const Project = ({ user, alert, match }) => {
       })
       .then(() => alert({ heading: 'Success', message: 'You deleted a project!', variant: 'success' }))
       .catch(() => alert({ heading: 'Rut roh', message: 'Something went wrong', variant: 'danger' }))
-      .catch(console.error)
   }
   if (deleted) {
     return <Redirect to='/projects'/>

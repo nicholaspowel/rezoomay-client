@@ -37,7 +37,7 @@ const EditEducation = ({ match, alert, user }) => {
       }
     })
       .then((response) => setEducation(response.data.education))
-      .catch(console.error)
+      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
   const handleChange = (event) => {

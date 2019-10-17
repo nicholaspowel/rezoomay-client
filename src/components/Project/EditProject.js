@@ -43,7 +43,7 @@ const EditProject = ({ match, alert, user }) => {
       }
     })
       .then((response) => setProject(response.data.project))
-      .catch(console.error)
+      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
   const handleChange = (event) => {

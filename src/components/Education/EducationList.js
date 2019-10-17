@@ -19,7 +19,7 @@ const EducationList = ({ user, alerts }) => {
         // console.log(responseData.data.educationList)
         setEducationList((responseData.data.educationList))
       })
-      .catch(console.error)
+      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
   const educationListJsx = educationList.reverse().map(education => (

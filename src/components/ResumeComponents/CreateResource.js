@@ -23,7 +23,7 @@ const CreateBook = ({ alert, user }) => {
   //     }
   //   })
   //     .then((response) => setBook(response.data.book))
-  //     .catch(console.error)
+  //     .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   // }, [])
 
   const handleChange = (event) => {
@@ -33,7 +33,6 @@ const CreateBook = ({ alert, user }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('book', book)
     axios({
       method: 'POST',
       url: `${apiUrl}/books`,

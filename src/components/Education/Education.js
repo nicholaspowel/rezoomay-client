@@ -50,7 +50,7 @@ const Education = ({ user, alert, match }) => {
       .then((response) => {
         setEducation(response.data.education)
       })
-      .catch(console.error)
+      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
   const deleteEducation = () => {
@@ -66,7 +66,6 @@ const Education = ({ user, alert, match }) => {
       })
       .then(() => alert({ heading: 'Success', message: 'You deleted a education!', variant: 'success' }))
       .catch(() => alert({ heading: 'Rut roh', message: 'Something went wrong', variant: 'danger' }))
-      .catch(console.error)
   }
   if (deleted) {
     return <Redirect to='/educationList'/>

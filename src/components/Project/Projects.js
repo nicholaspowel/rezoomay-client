@@ -19,7 +19,7 @@ const Projects = ({ user, alerts }) => {
         // console.log(responseData.data.projects)
         setProjects((responseData.data.projects))
       })
-      .catch(console.error)
+      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
   const projectsJsx = projects.reverse().map(project => (
