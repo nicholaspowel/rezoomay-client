@@ -36,8 +36,15 @@ const EditEducation = ({ match, alert, user }) => {
         'Authorization': `Bearer ${user.token}`
       }
     })
-      .then((response) => setEducation(response.data.education))
-      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
+      .then(response => {
+        const startDate = response.data.education.startDate.substring(0, 10)
+        const endDate = response.data.education.endDate.substring(0, 10)
+        setEducation({ ...response.data.education, startDate, endDate })
+      })
+      .catch((error) => {
+        console.error(error)
+        alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' })
+      })
   }, [])
 
   const handleChange = (event) => {
