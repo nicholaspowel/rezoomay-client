@@ -41,8 +41,7 @@ const EditEducation = ({ match, alert, user }) => {
         const endDate = response.data.education.endDate.substring(0, 10)
         setEducation({ ...response.data.education, startDate, endDate })
       })
-      .catch((error) => {
-        console.error(error)
+      .catch(() => {
         alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' })
       })
   }, [])
