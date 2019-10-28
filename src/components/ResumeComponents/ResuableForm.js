@@ -1,9 +1,16 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-const ReusableForm = ({ servant, handleChange, handleSubmit }) => {
-  const cancelPath = servant._id ? `#/servants/${servant._id}` : '#servants'
-  // An object containing the key names of my servant schema, with each value
+const ReusableForm = ({ resource, handleChange, handleSubmit, cancelPath }) => {
+// THINGS NEEDED:
+// handle icon selection
+// handle date selection
+// handle location
+// handle picture upload
+// handle text input
+// handle textarea input
+// handle selecting skills  
+  // An object containing the key names of my resource schema, with each value
   // being the way I'd like them displayed to the user
   const keyNames = {
     name: 'Name',
@@ -13,7 +20,7 @@ const ReusableForm = ({ servant, handleChange, handleSubmit }) => {
     atk: 'Attack',
     hp: 'HP'
   }
-  // list of servant class names, to be used for populating the Class dropdown
+  // list of resource class names, to be used for populating the Class dropdown
   const classList = ['Saber', 'Lancer', 'Archer', 'Rider', 'Caster', 'Assassin', 'Berserker', 'Ruler', 'Avenger', 'Alter Ego', 'Moon Cancer', 'Shielder']
   const textFieldJsx = key => {
     return (
@@ -30,7 +37,7 @@ const ReusableForm = ({ servant, handleChange, handleSubmit }) => {
         placeholder={keyNames[key]}
         name={key}
         onChange={handleChange}
-        value={servant[key]}
+        value={resource[key]}
         required
       />
     )
@@ -53,12 +60,12 @@ const ReusableForm = ({ servant, handleChange, handleSubmit }) => {
         placeholder={keyNames[key]}
         name={key}
         onChange={handleChange}
-        value={servant[key]}
+        value={resource[key]}
         required>
         {/* map through the `values` array, which will a range of 0 through 5
           for `rarity`, or a list of class names for `sclass` */}
         {values.map(e => (
-          // if `servant[key]` (with `key` being either `rarity` or `sclass`)
+          // if `resource[key]` (with `key` being either `rarity` or `sclass`)
           // matches the option being created, set it as the selected option
           <option key={e}>{e}</option>
         ))}

@@ -16,36 +16,47 @@ __v: 0
 _id: "5da08cd6ccf6513fbb556be0"
 */
 
-const Book = ({ user, alert, match }) => {
+const Education = ({ user, alert, match }) => {
   const [deleted, setDeleted] = useState(false)
-  const [book, setBook] = useState({
-    author: '',
-    createdAt: '',
-    firstPublished: '',
-    originalLanguage: '',
+  const [education, setEducation] = useState({
+    description:
+      '',
+    coursework: '',
+    _id: '',
     title: '',
+    startDate: '',
+    endDate: '',
+    school: '',
+    concentration: '',
+    location: {
+      city: '',
+      state: '',
+      country: ''
+    },
+    owner: '',
+    createdAt: '',
     updatedAt: '',
-    _id: ''
+    __v: 0
   })
 
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${apiUrl}/books/${match.params.id}`,
+      url: `${apiUrl}/educationList/${match.params.id}`,
       headers: {
         'Authorization': `Bearer ${user.token}`
       }
     })
       .then((response) => {
-        setBook(response.data.book)
+        setEducation(response.data.education)
       })
       .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
-  const deleteBook = () => {
+  const deleteEducation = () => {
     axios({
       method: 'DELETE',
-      url: `${apiUrl}/books/${match.params.id}`,
+      url: `${apiUrl}/educationList/${match.params.id}`,
       headers: {
         'Authorization': `Bearer ${user.token}`
       }
@@ -53,26 +64,38 @@ const Book = ({ user, alert, match }) => {
       .then((response) => {
         setDeleted(true)
       })
-      .then(() => alert({ heading: 'Success', message: 'You deleted a book!', variant: 'success' }))
+      .then(() => alert({ heading: 'Success', message: 'You deleted a education!', variant: 'success' }))
       .catch(() => alert({ heading: 'Rut roh', message: 'Something went wrong', variant: 'danger' }))
   }
   if (deleted) {
-    return <Redirect to='/books'/>
-  } else if (!book) {
+    return <Redirect to='/educationList'/>
+  } else if (!education) {
     return <h2>Loading...</h2>
   } else {
     return (
       <Fragment>
-        <h1>{book.title}</h1>
-        <p>Author: {book.author}</p>
-        <p>Published: {book.firstPublished}</p>
-        <p>Language: {book.originalLanguage}</p>
-        <Button onClick={deleteBook} variant="danger">Destroy Book </Button>
-        <Button href={`#/books/${match.params.id}/edit`} variant="warning">Edit</Button>
-        <Link to="/books">Back to all books</Link>
+        <h1>{education.title}</h1>
+        <div className="content-education-item">
+          <div className="d-flex justify-content-between">
+            <div>
+              <span className="font-weight-bold">{education.school}</span>
+            </div>
+            <div>
+              <span className="font-italic">{education.location.city}, {education.location.state}, {education.location.country} </span>
+            </div>
+            { /* use momentjs to display date s here  */ }
+          </div>
+          {education.coursework ? <span>Coursework:</span> : ''}
+          <ul>
+            {education.description.split(/\r\n|\n|\r/).map((bullet, index) => <li key={index}>{bullet}</li>)}
+          </ul>
+        </div>
+        <Button onClick={deleteEducation} variant="danger">Destroy Education </Button>
+        <Button href={`#/educationList/${match.params.id}/edit`} variant="warning">Edit</Button>
+        <Link to="/educationList">Back to all Education List</Link>
       </Fragment>
     )
   }
 }
 
-export default withRouter(Book)
+export default withRouter(Education)

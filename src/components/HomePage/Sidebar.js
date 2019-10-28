@@ -1,35 +1,43 @@
-import React from 'react'
-import styles from './sideBarMenu.css'
-import { Nav, NavItem, Navbar, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap'
+import React, { Fragment } from 'react'
+import Nav from 'react-bootstrap/Nav'
+import Accordion from 'react-bootstrap/Accordion'
 
-const Sidebar = () => {
-  return (
-    <div id="sidebar-menu" className={styles.sideBarMenuContainer}>
-      <Navbar fluid className={styles.sidebar} inverse >
+const authenticatedOptions = (
+  <Fragment>
+    <Nav.Link href="#contacts">Contact Methods</Nav.Link>
+    <Nav.Link href="#educationList">Education</Nav.Link>
+    <Nav.Link href="#interests">Interests</Nav.Link>
+    <Nav.Link href="#jobs">Jobs</Nav.Link>
+    <Nav.Link href="#profiles">Profiles</Nav.Link>
+    <Nav.Link href="#projects">Projects</Nav.Link>
+    <Nav.Link href="#skills">Skills</Nav.Link>
+    <Nav.Link href="#summaries">Summaries</Nav.Link>
+  </Fragment>
+)
 
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="/">User Name</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
+const unauthenticatedOptions = (
+  <Fragment>
+    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
+    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+  </Fragment>
+)
 
-        <Navbar.Collapse>
-          <Navbar.Text className={styles.userMenu}>
-            <Navbar.Link href="#"><Glyphicon glyph="home"/></Navbar.Link>
-            <Navbar.Link href="#"><Glyphicon glyph="log-out"/></Navbar.Link>
-          </Navbar.Text>
-          <Nav>
-            <NavDropdown eventKey={1} title="Item 1">
-              <MenuItem eventKey={1.1} href="#">Item 1.1</MenuItem>
-            </NavDropdown>
-            <NavItem eventKey={2}>Item 2</NavItem>
-            <NavItem eventKey={3}>Item 3</NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
-  )
-}
+const alwaysOptions = (
+  <Fragment>
+    <Nav.Link href="#/">Home</Nav.Link>
+  </Fragment>
+)
 
-export default Sidebar
+const Header = ({ user }) => (
+  <Accordion>
+    <Accordion.Toggle></Accordion.Toggle>
+    <Accordion.Collapse eventKey="0">
+      <Nav className="ml-auto" id="sidebar-content">
+        { alwaysOptions }
+        { user ? authenticatedOptions : unauthenticatedOptions }
+      </Nav>
+    </Accordion.Collapse>
+  </Accordion>
+)
+
+export default Header

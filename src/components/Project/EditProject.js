@@ -6,32 +6,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 // import { withRouter, Link } from 'react-router-dom'
 
 const EditProject = ({ match, alert, user }) => {
-  const [project, setProject] = useState({
-    description:
-      'Full time 500+ Web Development Immersive Program\n Developed four Full Stack web applications using JavaScript, HTML, CSS, and Ruby\nCollaborated with a team using Agile methodology and Scrum principles',
-    coursework: [],
-    _id: '',
-    title: 'GA',
-    startDate: {
-      month: 'Jan',
-      year: 2019
-    },
-    endDate: {
-      month: 'Apr',
-      year: 2019
-    },
-    school: 'General Assembly',
-    concentration: 'Full Stack Web Development',
-    location: {
-      city: 'Boston',
-      state: 'MA',
-      country: 'USA'
-    },
-    owner: '',
-    createdAt: '2019-10-15T22:38:46.652Z',
-    updatedAt: '2019-10-15T22:38:46.652Z',
-    __v: 0
-  })
+  const [project, setProject] = useState({})
   const [updated, setUpdated] = useState(null)
 
   useEffect(() => {
@@ -42,7 +17,11 @@ const EditProject = ({ match, alert, user }) => {
         'Authorization': `Bearer ${user.token}`
       }
     })
-      .then((response) => setProject(response.data.project))
+      .then(response => {
+        const startDate = response.data.project.startDate.substring(0, 10)
+        const endDate = response.data.project.endDate.substring(0, 10)
+        setProject({ ...response.data.project, startDate, endDate })
+      })
       .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 

@@ -13,6 +13,7 @@ import EducationList from '../Education/EducationList'
 import EditEducation from '../Education/EditEducation'
 import Education from '../Education/Education'
 import CreateEducation from '../Education/CreateEducation'
+// import Sidebar from '../HomePage/Sidebar'
 
 class App extends Component {
   constructor () {
