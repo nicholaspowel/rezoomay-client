@@ -28,16 +28,18 @@ const alwaysOptions = (
   </Fragment>
 )
 
-const Header = ({ user }) => (
-  <Accordion>
-    <Accordion.Toggle></Accordion.Toggle>
-    <Accordion.Collapse eventKey="0">
-      <Nav className="ml-auto" id="sidebar-content">
-        { alwaysOptions }
-        { user ? authenticatedOptions : unauthenticatedOptions }
-      </Nav>
-    </Accordion.Collapse>
-  </Accordion>
+const Sidebar = ({ user }) => (
+  <div className="sidebar">
+    <Accordion>
+      <Accordion.Toggle eventKey="sidebar">Resources</Accordion.Toggle>
+      <Accordion.Collapse eventKey="sidebar">
+        <Nav className="ml-auto flex-column" id="sidebar-content">
+          { alwaysOptions }
+          { user ? authenticatedOptions : unauthenticatedOptions }
+        </Nav>
+      </Accordion.Collapse>
+    </Accordion>
+  </div>
 )
 
-export default Header
+export default Sidebar

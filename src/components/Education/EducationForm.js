@@ -91,7 +91,7 @@ import Button from 'react-bootstrap/Button'
 */
 
 const EducationForm = ({ education, handleChange, handleSubmit }) => {
-  const cancelPath = education._id ? `#/educationList/${education._id}` : '#educationList'
+  const cancelPath = education._id ? '#/' : '#/'
 
   return (
     <Form onSubmit={handleSubmit}>

@@ -13,7 +13,8 @@ import EducationList from '../Education/EducationList'
 import EditEducation from '../Education/EditEducation'
 import Education from '../Education/Education'
 import CreateEducation from '../Education/CreateEducation'
-// import Sidebar from '../HomePage/Sidebar'
+
+import HomePage from '../HomePage/HomePage'
 
 class App extends Component {
   constructor () {
@@ -55,7 +56,7 @@ class App extends Component {
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} exact path='/' render={() => (
-            <EducationList alert={this.alert} user={user} />
+            <HomePage alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />

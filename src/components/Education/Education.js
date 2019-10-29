@@ -1,8 +1,8 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import { withRouter, Link, Redirect } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
+import { withRouter, Redirect } from 'react-router-dom'
+import { Button, Accordion, Card } from 'react-bootstrap'
 
 /*
 author: "Miguel de Cervantes"
@@ -16,7 +16,7 @@ __v: 0
 _id: "5da08cd6ccf6513fbb556be0"
 */
 
-const Education = ({ user, alert, match }) => {
+const Education = ({ idKey, user, alert }) => {
   const [deleted, setDeleted] = useState(false)
   const [education, setEducation] = useState({
     description:
@@ -42,7 +42,7 @@ const Education = ({ user, alert, match }) => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${apiUrl}/educationList/${match.params.id}`,
+      url: `${apiUrl}/educationList/${idKey}`,
       headers: {
         'Authorization': `Bearer ${user.token}`
       }
@@ -56,7 +56,7 @@ const Education = ({ user, alert, match }) => {
   const deleteEducation = () => {
     axios({
       method: 'DELETE',
-      url: `${apiUrl}/educationList/${match.params.id}`,
+      url: `${apiUrl}/educationList/${idKey}`,
       headers: {
         'Authorization': `Bearer ${user.token}`
       }
@@ -68,31 +68,41 @@ const Education = ({ user, alert, match }) => {
       .catch(() => alert({ heading: 'Rut roh', message: 'Something went wrong', variant: 'danger' }))
   }
   if (deleted) {
-    return <Redirect to='/educationList'/>
+    return <Redirect to='/'/>
   } else if (!education) {
     return <h2>Loading...</h2>
   } else {
     return (
       <Fragment>
-        <h1>{education.title}</h1>
-        <div className="content-education-item">
-          <div className="d-flex justify-content-between">
-            <div>
-              <span className="font-weight-bold">{education.school}</span>
-            </div>
-            <div>
-              <span className="font-italic">{education.location.city}, {education.location.state}, {education.location.country} </span>
-            </div>
-            { /* use momentjs to display date s here  */ }
-          </div>
-          {education.coursework ? <span>Coursework:</span> : ''}
-          <ul>
-            {education.description.split(/\r\n|\n|\r/).map((bullet, index) => <li key={index}>{bullet}</li>)}
-          </ul>
-        </div>
-        <Button onClick={deleteEducation} variant="danger">Destroy Education </Button>
-        <Button href={`#/educationList/${match.params.id}/edit`} variant="warning">Edit</Button>
-        <Link to="/educationList">Back to all Education List</Link>
+        <Accordion>
+          <Card>
+            <Accordion.Toggle as={Card.Header} eventKey={idKey}>
+              {education.title}
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey={idKey}>
+              <Card.Body>
+                <h1>{education.title}</h1>
+                <div className="content-education-item">
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      <span className="font-weight-bold">{education.school}</span>
+                    </div>
+                    <div>
+                      <span className="font-italic">{education.location.city}, {education.location.state}, {education.location.country} </span>
+                    </div>
+                    { /* use momentjs to display date s here  */ }
+                  </div>
+                  {education.coursework ? <span>Coursework:</span> : ''}
+                  <ul>
+                    {education.description.split(/\r\n|\n|\r/).map((bullet, index) => <li key={index}>{bullet}</li>)}
+                  </ul>
+                </div>
+                <Button onClick={deleteEducation} variant="danger">Destroy Education </Button>
+                <Button href={`#/educationList/${idKey}/edit`} variant="warning">Edit</Button>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
       </Fragment>
     )
   }

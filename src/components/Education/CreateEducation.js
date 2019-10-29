@@ -54,7 +54,7 @@ const CreateEducation = ({ alert, user }) => {
   }
 
   if (created) {
-    return <Redirect to={`/educationList/${created}`}/>
+    return <Redirect to={'/'}/>
   } else {
     return (
       <EducationForm education={education} handleChange={handleChange} handleSubmit={handleSubmit}/>

@@ -78,7 +78,7 @@ const EditEducation = ({ match, alert, user }) => {
   }
 
   if (updated) {
-    return <Redirect to={`/educationList/${updated}`}/>
+    return <Redirect to={'/'}/>
   } else {
     return (
       <EducationForm education={education} handleChange={handleChange} handleSubmit={handleSubmit}/>
