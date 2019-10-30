@@ -30,8 +30,8 @@ const alwaysOptions = (
 
 const Sidebar = ({ user }) => (
   <div className="sidebar">
-    <Accordion>
-      <Accordion.Toggle eventKey="sidebar">Resources</Accordion.Toggle>
+    <Accordion className="navbar-dark">
+      <Accordion.Toggle eventKey="sidebar"><span className="navbar-toggler-icon"></span></Accordion.Toggle>
       <Accordion.Collapse eventKey="sidebar">
         <Nav className="ml-auto flex-column" id="sidebar-content">
           { alwaysOptions }
