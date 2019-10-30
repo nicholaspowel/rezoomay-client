@@ -1,20 +1,10 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
 import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
-    <NavDropdown title="Resources" id="basic-nav-dropdown">
-      <NavDropdown.Item href="#contacts">Contact Methods</NavDropdown.Item>
-      <NavDropdown.Item href="#educationList">Education</NavDropdown.Item>
-      <NavDropdown.Item href="#interests">Interests</NavDropdown.Item>
-      <NavDropdown.Item href="#jobs">Jobs</NavDropdown.Item>
-      <NavDropdown.Item href="#profiles">Profiles</NavDropdown.Item>
-      <NavDropdown.Item href="#projects">Projects</NavDropdown.Item>
-      <NavDropdown.Item href="#skills">Skills</NavDropdown.Item>
-      <NavDropdown.Item href="#summaries">Summaries</NavDropdown.Item>
-    </NavDropdown>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>

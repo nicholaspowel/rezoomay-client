@@ -7,8 +7,8 @@ import { Button, Accordion, Card } from 'react-bootstrap'
 import { resourceRoutes } from '../../resourceDefinitions'
 import Resource from './Resource'
 
-const EducationList = ({ user, alerts, resource }) => {
-  const [itemList, setEducationList] = useState([])
+const ResourceList = ({ user, alerts, resource }) => {
+  const [itemList, setResourceList] = useState([])
 
   useEffect(() => {
     axios({
@@ -20,7 +20,7 @@ const EducationList = ({ user, alerts, resource }) => {
     })
       .then(responseData => {
         // console.log(responseData.data.itemList)
-        setEducationList((responseData.data.itemList))
+        setResourceList((responseData.data.itemList))
       })
       .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
@@ -31,16 +31,16 @@ const EducationList = ({ user, alerts, resource }) => {
   return (
     <Accordion>
       <Accordion.Toggle as={Card.Header} eventKey="0">
-        Education
+        Resource
       </Accordion.Toggle>
       <Accordion.Collapse eventKey="0">
         <Card.Body>
           {itemListJsx}
-          <Link to='/create-item'><Button>Create Education</Button></Link>
+          <Link to='/create-item'><Button>Create Resource</Button></Link>
         </Card.Body>
       </Accordion.Collapse>
     </Accordion>
   )
 }
 
-export default EducationList
+export default ResourceList

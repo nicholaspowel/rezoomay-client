@@ -1,18 +1,31 @@
 export const resourceRoutes = {
-  binder: 'binders',
+  // binder: 'binders',
   contact: 'contacts',
   education: 'educationList',
   interest: 'interests',
   job: 'jobs',
   profile: 'profiles',
   project: 'projects',
-  resume: 'resumes',
+  // resume: 'resumes',
   skill: 'skills',
   summary: 'summaries'
 }
 
+export const resourceTitles = {
+  // binder: 'Collections',
+  contact: 'Contacts',
+  education: 'Education',
+  interest: 'Interests',
+  job: 'Jobs',
+  profile: 'Profiles',
+  project: 'Projects',
+  // resume: 'Resumes',
+  skill: 'Skills',
+  summary: 'Summaries'
+}
+
 export const resourceModels = {
-  binder: {},
+  // binder: {},
   contact: {},
   education: {
     education: {
@@ -40,7 +53,7 @@ export const resourceModels = {
   job: {},
   profile: {},
   project: {},
-  resume: {},
+  // resume: {},
   skill: {},
   summary: {}
 }
