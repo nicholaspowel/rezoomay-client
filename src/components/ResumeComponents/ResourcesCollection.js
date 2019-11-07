@@ -7,9 +7,9 @@ import { Button, Accordion, Card } from 'react-bootstrap'
 import { resourceRoutes, resourceTitles } from '../../resourceDefinitions'
 import Resource from './Resource'
 
-const ResourceList = ({ user, alerts, resource }) => {
+const ResourcesCollection = ({ user, alert, resource }) => {
   const [itemList, setResourceList] = useState([])
-
+  console.log('resourceRoute', resource, resourceRoutes[resource])
   useEffect(() => {
     axios({
       method: 'GET',
@@ -19,14 +19,16 @@ const ResourceList = ({ user, alerts, resource }) => {
       }
     })
       .then(responseData => {
-        // console.log(responseData.data.itemList)
-        setResourceList((responseData.data.itemList))
+        console.log(responseData)
+        const item = resourceRoutes[resource]
+        console.log('item', item)
+        setResourceList((responseData.data[item]))
       })
-      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
+      .catch(() => console.error('could not load', resource))
   }, [])
 
   const itemListJsx = itemList ? itemList.map(item => (
-    <Resource key={item._id} idKey={item._id} item={item} user={user} alert={alert}/>
+    <Resource key={item._id} resource={resource} idKey={item._id} item={item} user={user} alert={alert}/>
   )) : 'No Items to display'
   return (
     <Accordion>
@@ -43,4 +45,4 @@ const ResourceList = ({ user, alerts, resource }) => {
   )
 }
 
-export default ResourceList
+export default ResourcesCollection

@@ -18,7 +18,6 @@ const HomePage = ({ user, alert }) => {
     <Fragment>
       <Sidebar user={user}/>
       <div className="container">
-        <EducationList alert={this.alert} user={user} />
         {resourceJsx}
         <AuthenticatedRoute user={user} exact path='/educationList' render={() => (
           <EducationList alert={this.alert} user={user} />

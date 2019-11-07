@@ -3,10 +3,10 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Link } from 'react-router-dom'
 import { Button, Accordion, Card } from 'react-bootstrap'
-
+// alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' })
 import Education from './Education'
 
-const EducationList = ({ user, alerts }) => {
+const EducationList = ({ user, alert }) => {
   const [educationList, setEducationList] = useState([])
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const EducationList = ({ user, alerts }) => {
         // console.log(responseData.data.educationList)
         setEducationList((responseData.data.educationList))
       })
-      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
+      .catch(() => console.log('bad education'))
   }, [])
 
   const educationListJsx = educationList.map(education => (

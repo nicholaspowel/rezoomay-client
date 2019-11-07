@@ -17,10 +17,10 @@ __v: 0
 _id: "5da08cd6ccf6513fbb556be0"
 */
 
-const Education = ({ resource, idKey, user, alert }) => {
+const Resource = ({ resource, idKey, user, alert }) => {
   const [deleted, setDeleted] = useState(false)
   const [item, setItem] = useState(resourceModels[resource])
-
+  console.log('in a resource', resource)
   useEffect(() => {
     axios({
       method: 'GET',
@@ -30,9 +30,9 @@ const Education = ({ resource, idKey, user, alert }) => {
       }
     })
       .then((response) => {
-        setItem(response.data.education)
+        setItem(response.data[resource])
       })
-      .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
+      .catch(() => console.error('could not load', resource))
   }, [])
 
   const deleteResource = () => {
@@ -64,7 +64,7 @@ const Education = ({ resource, idKey, user, alert }) => {
             <Accordion.Collapse eventKey={idKey}>
               <Card.Body>
                 <h1>{item.title}</h1>
-                <Button onClick={deleteResource} variant="danger">Destroy Education </Button>
+                <Button onClick={deleteResource} variant="danger">Destroy Resource </Button>
                 <Button href={`#/${resourceRoutes[resource]}/${idKey}/edit`} variant="warning">Edit</Button>
               </Card.Body>
             </Accordion.Collapse>
@@ -75,4 +75,4 @@ const Education = ({ resource, idKey, user, alert }) => {
   }
 }
 
-export default withRouter(Education)
+export default withRouter(Resource)
