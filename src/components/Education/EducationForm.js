@@ -5,64 +5,6 @@ import Button from 'react-bootstrap/Button'
 
 /*
 {
-<Form.Group as={Row} controlId="startDate">
-  <Form.Label>Start Month</Form.Label>
-  <Form.Control
-    as="select"
-    name="startDate[month]"
-    onChange={handleChange}
-    value={education.startDate.month}>
-    <option>Jan</option>
-    <option>Feb</option>
-    <option>Mar</option>
-    <option>Apr</option>
-    <option>May</option>
-    <option>Jun</option>
-    <option>Jul</option>
-    <option>Aug</option>
-    <option>Sep</option>
-    <option>Oct</option>
-    <option>Nov</option>
-    <option>Dec</option>
-  </Form.Control>
-  <Form.Label>Start Year</Form.Label>
-  <Form.Control
-    type="number"
-    name="startDate[year]"
-    onChange={handleChange}
-    value={education.startDate.year}
-  />
-</Form.Group>
-<Form.Group as={Row} controlId="endDate">
-  <Form.Label>End Month</Form.Label>
-  <Form.Control
-    as="select"
-    name="endDate[month]"
-    onChange={handleChange}
-    value={education.endDate.month}>
-    <option>Jan</option>
-    <option>Feb</option>
-    <option>Mar</option>
-    <option>Apr</option>
-    <option>May</option>
-    <option>Jun</option>
-    <option>Jul</option>
-    <option>Aug</option>
-    <option>Sep</option>
-    <option>Oct</option>
-    <option>Nov</option>
-    <option>Dec</option>
-  </Form.Control>
-  <Form.Label>End Year</Form.Label>
-  <Form.Control
-    type="number"
-    name="endDate[year]"
-    onChange={handleChange}
-    value={education.endDate.year}
-    required
-  />
-</Form.Group>
-
   description: 'Full time 500+ Web Development Immersive Program\n Developed four Full Stack web applications using JavaScript, HTML, CSS, and Ruby\nCollaborated with a team using Agile methodology and Scrum principles',
   coursework: '',
   _id: '',

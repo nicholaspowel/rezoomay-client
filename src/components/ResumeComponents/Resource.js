@@ -35,7 +35,7 @@ const Education = ({ resource, idKey, user, alert }) => {
       .catch(() => alert({ heading: 'Rut roh', message: 'Couldn\'t get resource', variant: 'danger' }))
   }, [])
 
-  const deleteEducation = () => {
+  const deleteResource = () => {
     axios({
       method: 'DELETE',
       url: `${apiUrl}/${resourceRoutes[resource]}/${idKey}`,
@@ -64,23 +64,8 @@ const Education = ({ resource, idKey, user, alert }) => {
             <Accordion.Collapse eventKey={idKey}>
               <Card.Body>
                 <h1>{item.title}</h1>
-                <div className="content-item-item">
-                  <div className="d-flex justify-content-between">
-                    <div>
-                      <span className="font-weight-bold">{item.school}</span>
-                    </div>
-                    <div>
-                      <span className="font-italic">{item.location.city}, {item.location.state}, {item.location.country} </span>
-                    </div>
-                    { /* use momentjs to display date s here  */ }
-                  </div>
-                  {item.coursework ? <span>Coursework:</span> : ''}
-                  <ul>
-                    {item.description.split(/\r\n|\n|\r/).map((bullet, index) => <li key={index}>{bullet}</li>)}
-                  </ul>
-                </div>
-                <Button onClick={deleteEducation} variant="danger">Destroy Education </Button>
-                <Button href={`#/educationList/${idKey}/edit`} variant="warning">Edit</Button>
+                <Button onClick={deleteResource} variant="danger">Destroy Education </Button>
+                <Button href={`#/${resourceRoutes[resource]}/${idKey}/edit`} variant="warning">Edit</Button>
               </Card.Body>
             </Accordion.Collapse>
           </Card>

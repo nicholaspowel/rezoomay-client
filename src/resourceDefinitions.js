@@ -1,3 +1,14 @@
+export const resourceArray = [
+  'contact',
+  'education',
+  'interest',
+  'job',
+  'profile',
+  'project',
+  'skill',
+  'summary'
+]
+
 export const resourceRoutes = {
   // binder: 'binders',
   contact: 'contacts',
@@ -13,7 +24,7 @@ export const resourceRoutes = {
 
 export const resourceTitles = {
   // binder: 'Collections',
-  contact: 'Contacts',
+  contact: 'Contact Methods',
   education: 'Education',
   interest: 'Interests',
   job: 'Jobs',
