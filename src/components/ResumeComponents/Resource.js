@@ -46,8 +46,8 @@ const Resource = ({ resource, idKey, user, alert }) => {
       .then((response) => {
         setDeleted(true)
       })
-      .then(() => alert({ heading: 'Success', message: 'You deleted a education!', variant: 'success' }))
-      .catch(() => alert({ heading: 'Rut roh', message: 'Something went wrong', variant: 'danger' }))
+      .then(() => console.log('Successfull Deletion'))
+      .catch(() => console.log('Something went wrong with deletion'))
   }
   if (deleted) {
     return <Redirect to='/'/>
@@ -59,11 +59,11 @@ const Resource = ({ resource, idKey, user, alert }) => {
         <Accordion>
           <Card>
             <Accordion.Toggle as={Card.Header} eventKey={idKey}>
-              {item.title}
+              {item.title || item.method || item.value}
             </Accordion.Toggle>
             <Accordion.Collapse eventKey={idKey}>
               <Card.Body>
-                <h1>{item.title}</h1>
+                <h1>{item.title || item.value}</h1>
                 <Button onClick={deleteResource} variant="danger">Destroy Resource </Button>
                 <Button href={`#/${resourceRoutes[resource]}/${idKey}/edit`} variant="warning">Edit</Button>
               </Card.Body>
